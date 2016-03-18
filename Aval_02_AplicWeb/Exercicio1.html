@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+    <head>
+        <title> Exerc&iacute;cio 1 </title>
+        <meta charset="utf-8">
+		<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="jquery.maskedinput.js"></script>
+		<script language="JavaScript">
+			$(document).ready(function(){
+				$(".erroNome").hide();
+				$(".erroData").hide();
+				$("#data").mask("99/99/9999");
+			});			
+			function validar(){
+				var nomepessoa = document.querySelector("#nome").value;
+				var j = 0;
+				//Verificar nome
+				if (nomepessoa.lenght < 10){
+					alert("Coloque um nome com mais de 10 caracteres!")
+				}
+				var batata = document.querySelector("#data").value;
+				//Verificar dia
+				var nigga = batata.split("/");
+				d = parseInt.nigga[0];
+				m = parseInt.nigga[1];
+				a = parseInt.nigga[2];
+				if(d < 1){
+					alert("Dia inválido");
+					j++;
+				}
+				if((d > 31) && ((m==1) || (m==3) || (m==5) || (m==7) || (m==8) || (m==10) || (m==12))){
+						alert("Dia inválido");
+						j++;
+				}else if((d > 30) && ((m==4) || (m==6) || (m==9) || (m==11)))){
+						alert("Dia inválido");
+						j++;
+				}else if((d>29) && (bis==true)){
+						alert("Dia inválido");
+						j++;
+				}else{
+						alert("Dia inválido");
+						j++;
+				}
+				/*Verificar mes*/					
+				if ((m > 12) || (m < 1)) {
+						alert("Mês Inválido");
+						j++;
+				}
+					
+				//Verificar se ano é bissexto
+				var bis=false;
+				if((a%4==0) && (a%100==0)){
+					bis = false;
+				}
+				if(((a%4==0) && (a%100==0)) && (a%400==0)){
+					bis=true;
+				}else{
+					bis=false;
+				}
+				//Verificar email
+				var em = document.querySelector("#email").value;
+				var emeio = em.split("@");
+				if (emeio[0]!=null && (emeio[1]!=null)) {
+					
+				}else {
+					alert("Email invalido");
+					j++;
+				}
+				if (j==0) {
+					alert("Tudo certo!");
+				}
+			}
+			
+		</script>
+        <style>
+            #form{
+                width: 300px;
+            }
+            .nom{
+                padding-right: 116px;
+            }
+            .ema{
+                padding-right: 117px;
+            }
+            #enviar{
+                margin-left: 126px;
+            }
+            #limpar{
+                margin-left: 100px;
+            }
+        </style>
+    </head>
+    <body>
+		<h1> Formul&aacute;rio de incri&ccedil;&atilde;o </h1>
+		<hr><br><br>
+		<form id="form1">
+		<label class="nom" for="nome">Nome:</label>
+				<input type="text" id="nome">
+		<span id="erroNome"> Nome deve ser maior que 10 </span>
+		<br>
+		
+		<label for="data">Data de Nascimento:</label> 
+				<input type="text" id="data" >
+		<span id="erroData"> Data inv&aacute;lida. Verifique se este dia/mês existe. </span>
+		<br>
+		
+		<label class="ema" for="email">Email:</label>
+				<input type="text" id="email"> 
+				<span class="erroEmail"> Email Inv&aacute;lido </span>
+				<br><br>
+				<input type="button" name="botao-limar" value="Limpar" id="limpar">
+				<input type="button" name="botao-enviar" value="Enviar" id="enviar" onclick="validar()">
+
+		</form>
+    </body>
+</html>
